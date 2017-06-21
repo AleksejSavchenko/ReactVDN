@@ -1,7 +1,8 @@
 import React from 'react';
 import { Router } from 'react-router';
 import messages from '../../messages.json';
-
+import './InboxPage.less';
+import MessagePreview from './MessagePreview.jsx';
 
 class Inbox extends React.Component {
     constructor(props){
@@ -10,6 +11,9 @@ class Inbox extends React.Component {
             messages
         }
     }
+    handlePreviewClick(messageId) {
+        alert(messageId);
+    }
     render() {
         const { messages } = this.state; 
         return (
@@ -17,11 +21,12 @@ class Inbox extends React.Component {
                 <div className="messages">
                     {
                         messages.map(message => 
-                            <div className="" key={ message.id }>
-                                { message.senderName } <br />
-                                { message.senderEmail } <br />
-                                { message.subject } <br />
-                            </div>
+                            <MessagePreview 
+                                key = { message.id }
+                                title = { message.subject }
+                                senderName = { message.senderName }
+                                onClick={this.handlePreviewClick.bind(null, message.id)}
+                            />
                         )
                     }
                 </div>
