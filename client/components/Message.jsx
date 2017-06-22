@@ -4,7 +4,9 @@ import './Message.less';
 class Message extends React.Component {
     render(){
         return (
-            'Some Message'
+            <div className="Message">
+                Some Message
+            </div>
         )
     }
 }
